@@ -12,7 +12,7 @@ section#skills
 </template>
 
 <script>
-import { TimelineLite, TweenLite, Power4 } from 'gsap'
+import { TimelineLite, TweenLite, Power1 } from 'gsap'
 import ScrollMagic from 'scrollmagic'
 import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
 
@@ -22,6 +22,15 @@ export default {
   },
   data: () => ({
     skills: [
+      {
+        class: 'skills__frontend skill__top',
+        title: 'Preprocessors & ECMA Script',
+        description: [
+          { name: 'Sass / SCSS', icon: 'icon-sass' },
+          { name: 'JavaScript / ES6', icon: 'icon-js' },
+          { name: 'Webpack', icon: 'icon-webpack' }
+        ]
+      },
       {
         class: 'skills__JSFrameworks skill__top',
         title: 'JS Frameworks',
@@ -35,16 +44,8 @@ export default {
         class: 'skills__JSLibraries skill__top',
         title: 'JS Librairies',
         description: [
-          { name: 'GSAP', icon: 'icon-communication' },
-          { name: 'ScrollMagic', icon: 'icon-communication' }
-        ]
-      },
-      {
-        class: 'skills__frontend skill__top',
-        title: 'Preprocessors & ECMA Script',
-        description: [
-          { name: 'Sass / SCSS', icon: 'icon-sass' },
-          { name: 'JavaScript / ES6', icon: 'icon-js' }
+          { name: 'GSAP', icon: 'icon-sock' },
+          { name: 'ScrollMagic', icon: 'icon-wand' }
         ]
       },
       {
@@ -59,18 +60,18 @@ export default {
         class: 'skills__management skill__bottom',
         title: 'Soft skills',
         description: [
-          { name: 'Strong work ethic' },
-          { name: 'Keen on making a real difference' },
-          { name: 'Excellent communication skills' }
+          { name: 'Strong work ethic', icon: 'icon-triangle' },
+          { name: 'Keen on making a real difference', icon: 'icon-triangle' },
+          { name: 'Excellent communication skills', icon: 'icon-triangle' }
         ]
       },
       {
         class: 'skills__interest skill__bottom',
         title: 'Interests',
         description: [
-          { name: 'CS50' },
-          { name: 'CSS tricks' },
-          { name: 'GUI' }
+          { name: 'CS50', icon: 'icon-triangle' },
+          { name: 'CSS tricks', icon: 'icon-triangle' },
+          { name: 'GUI', icon: 'icon-triangle' }
         ]
       }
     ]
@@ -78,11 +79,11 @@ export default {
   methods: {
     animateSkills () {
       const tweenSkills = new TimelineLite()
-      tweenSkills.add(TweenLite.to('.skills', 1, { ease: Power4.easeInOut }))
-        .fromTo('.skills', 2, { y: '30%', opacity: 0 }, { y: '0%', opacity: 1 }, 2)
+      tweenSkills.add(TweenLite.to('.skills', 2, { ease: Power1.easeInOut }))
+        .fromTo('.skills', 2, { y: '30%', opacity: 0 }, { y: '-10%', opacity: 1 }, 1)
 
       const controller = new ScrollMagic.Controller()
-      new ScrollMagic.Scene({ triggerElement: '.skills', duration: 500, triggerHook: 1 })
+      new ScrollMagic.Scene({ triggerElement: '#skills', duration: '50%', triggerHook: 0.25 })
         .setTween(tweenSkills)
         .addTo(controller)
     }
@@ -91,6 +92,7 @@ export default {
 </script>
 
 <style lang="scss">
+#skills {padding-top: 20vh;}
 .skills {
   height: auto;
   position: relative;
@@ -105,7 +107,12 @@ export default {
   padding: 15px 15px 30px 15px;
   text-align: center;
     &--icon {
-    padding-right: 6px;
+      padding-right: 6px;
+      height: 22px;
+    }
+    &--list li {
+      line-height: 21px;
+      padding-bottom: 5px;
     }
   }
   & ul {
@@ -113,4 +120,25 @@ export default {
   }
 }
 
+.icon-triangle:before {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 768px) {
+  .skills__item h2 {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .skills {
+    display: block;
+  }
+  .skills__item {
+    width: 100%;
+  }
+  .skills__item h2 {
+    font-size: 20px;
+  }
+}
 </style>

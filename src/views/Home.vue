@@ -1,93 +1,88 @@
 <template lang="pug">
-section#home(:class="{ 'no-scroll': !scroll }")
+section#home(:class="{ 'no-scroll': !animationDone }")
   .home
+    .home__name-wrapper.home__name-wrapper--animated
+      .home__name.home__name--full(v-if="animationDone") HELENE ANDRE
+      .home__name.home__name--animated(v-else)
+        - var $text = "HELENE ANDRE"
+        - for (i = 0; i < 50; i++)
+          .text #{$text}
+
     .home__text
       .home__text--job SOFTWARE DEVELOPER
       .home__text--location @Praktika, Melbourne
-    .home__background(v-if="!scroll")
-    - var $text = "HELENE ANDRE"
-    .home__name-animation(v-if="!scroll")
-      - for (i = 0; i < 300; i++)
-        .text #{$text}
-    .home__name(:class="{ 'show': animationEnded }") HELENE ANDRE
-    input.home__skip-button(:class="{ 'hide': animationEnded }" type="button" value="Skip" @click="skipAnimation()")
+    .home__background(v-if="!animationDone")
 
-  .rain-wrapper
-    - for (i = 0; i < 5; i++)
-      i.rain
-      i.rain2
+    v-fade-transition
+      input.home__skip-button(
+        v-if="!animationDone"
+        type="button"
+        value="Skip"
+        @click="skipAnimation()")
 
+  rain(v-if="animationDone")
   .home__description
-    div.home__description-wrapper
+    div.home__description-clipper
       div.home__description--text I help companies &amp; individuals to build
       div friendly user interfaces and seamless experiences.
 </template>
 
 <script>
-import { TimelineLite, TimelineMax, TweenLite, Power1, Linear } from 'gsap'
+import { TimelineMax, TweenLite, Power1 } from 'gsap'
 import ScrollMagic from 'scrollmagic'
 import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap'
+import rain from '@/components/rain'
 
 export default {
-  mounted () {
-    this.darkenBackground()
-    this.preventScroll()
-    this.animateMainFocus()
-  },
+  components: { rain },
   data: () => ({
-    scroll: false,
-    animationEnded: false,
-    delayAnimation: 9000,
-    skip: false
+    animationDone: false,
+    delayAnimation: 9000
   }),
+
   created () {
     document.addEventListener('keyup', e => {
-      // Onenter or escape keyup, skip animation. (13 = enter, 27 = escape)
+      // On enter or escape keyup, skip animation. (13 = enter, 27 = escape)
       if (e.keyCode === 13 || e.keyCode === 27) this.skipAnimation()
     })
   },
+
+  mounted () {
+    this.darkenBackground()
+    this.preventScroll()
+    this.animateClipper()
+  },
+
   beforeDestroy () {
     document.removeEventListener('keyup', e => {})
   },
+
   methods: {
     darkenBackground () {
-      let tweenBackground = new TimelineLite()
-      tweenBackground.add(TweenLite.to('.home__background', 2, { ease: Power1.easeInOut, y: '-100%' }), 6)
-    },
-    rainFall () {
-      let timeLine = new TimelineMax({ repeat: -1, force3D: true })
-        .to('.rain', 1, { ease: Linear.easeNone })
-        .staggerTo('.rain', 2, { top: 200, backgroundColor: '#000' }, 1)
-
-      let timeLine2 = new TimelineMax({ repeat: -1, force3D: true })
-        .delay(1.5)
-        .to('.rain2', 2, { ease: Linear.easeNone })
-        .staggerTo('.rain2', 2, { top: 200, backgroundColor: '#000' }, 1)
+      let timelineBackground = new TimelineMax()
+      timelineBackground.add(TweenLite.to('.home__background', 2, { ease: Power1.easeInOut, y: '-100%' }), 6)
     },
     preventScroll () {
-      window.scrollTo(0, 0)
       setTimeout(() => {
-        this.rainFall()
-      }, this.delayAnimation)
-      setTimeout(() => {
-        window.scrollTo(0, 0)
-        this.scroll = true
-        this.animationEnded = true
+        this.animationDone = true
+        this.$emit('animation-done')
       }, this.delayAnimation)
     },
-    animateMainFocus () {
-      let timeline3 = new TimelineMax()
+    animateClipper () {
+      let timelineClipper = new TimelineMax()
 
-      timeline3.to('.home__description-wrapper', 2, { opacity: 1 })
-        .fromTo('.home__description--text', 2, { marginLeft: -800, opacity: 0 }, { marginLeft: 0, opacity: 1 }, 2)
-        .fromTo('.home__description-wrapper', 2, { width: 0 }, { width: 512 }, 2)
+      timelineClipper.to('.home__description-clipper', 2, { opacity: 1 })
+        .fromTo('.home__description--text', 2, { marginLeft: '-120%', opacity: 0 }, { marginLeft: 0, opacity: 1 }, 1.6)
+        .fromTo('.home__description-clipper', 4, { width: 0 }, { width: '85%' }, 2)
 
       const controller = new ScrollMagic.Controller()
-      new ScrollMagic.Scene({ triggerElement: '.home__description', duration: 800, triggerHook: 1 })
-        .setTween(timeline3)
+      new ScrollMagic.Scene({ triggerElement: '.home__description', duration: '30%', triggerHook: 0.25 })
+        .setTween(timelineClipper)
         .addTo(controller)
     },
-    skipAnimation() {
+    skipAnimation () {
+      this.$emit('animation-done')
+      this.animationDone = true
       this.delayAnimation = 0
       this.preventScroll()
     }
@@ -96,26 +91,37 @@ export default {
 </script>
 
 <style lang="scss">
-#home {height: 210vh;}
+#home {
+  height: auto;
+}
 
 .home {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-  perspective: 800px;
-  &__name {
+  position: relative;
+
+  &__name-wrapper {
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 7vw;
     color: #f8bc9b;
     line-height: 7vw;
     letter-spacing: 0.5em;
-    padding-left: 0.5em;
-    font-family: abyssopelagic, arial;
-    opacity: 0;
-    mix-blend-mode: screen;
+    font-family: Abyssopelagic, Arial, Helvetica, sans-serif;
   }
+
+  &__name {
+    z-index: 1;
+    mix-blend-mode: difference;
+
+    &--full {text-indent: 0.5em;}
+  }
+
   &__skip-button {
     position: absolute;
     bottom: 20px;
@@ -124,13 +130,14 @@ export default {
     padding: 4px 10px 4px 10px;
     font-size: 1em;
     line-height: 1em;
-    font-family: Roboto, arial;
-    color: #eeeeee;
-    border: 1px solid #eeeeee;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    color: #bdbdbd;
+    border: 1px solid #bdbdbd;
     background-color: transparent;
     outline: none;
     transition: 0.3s ease-in-out;
     z-index: 20;
+
     &:hover {
       cursor: pointer;
       opacity: 1;
@@ -142,20 +149,22 @@ export default {
 // ============================================================= //
 
 // ============== Animation text Helene Andre ================== //
-.home__name-animation {
+.home__name-wrapper--animated {
   .text {
     position: absolute;
     font-size: 7vw;
     color: #fff;
+    mix-blend-mode: screen;
     line-height: 7vw;
     letter-spacing: 0.5em;
     padding-left: 0.5em;
     opacity: 0;
-    font-family: abyssopelagic, arial;
+    font-family: Abyssopelagic, Arial, Helvetica, sans-serif;
     transform: translate(-50%, -50%);
     width: fit-content;
-    mix-blend-mode: screen;
-    @for $i from 0 through 300 {
+    z-index: 10;
+
+    @for $i from 0 through 50 {
       $key: $i + 1;
       &:nth-child(#{$key}) {
         $row: floor($i / 20);
@@ -214,12 +223,13 @@ export default {
     color: white;
     font-size: 3em;
     font-size: 26px;
-    font-family: 'Roboto', arial;
+    font-family: 'Lato-Light', Arial, Helvetica, sans-serif;
     font-weight: 200;
     letter-spacing: 3px;
     width: fit-content;
     text-align: center;
   }
+
   &--location {
     height: 36px;
     width: 324px;
@@ -230,7 +240,7 @@ export default {
     transform: translateX(-50%);
     color: white;
     font-size: 18px;
-    font-family: roboto, arial;
+    font-family: 'Lato-Light', Arial, Helvetica, sans-serif;
     font-weight: 200;
     letter-spacing: 2px;
     width: fit-content;
@@ -239,30 +249,19 @@ export default {
 }
 
 .home__description {
-  height: 50vh;
-  width: 600px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-top: 58vh;
+  height: 80vh;
+  margin: auto;
+  padding-top: 46vh;
+  margin-bottom: 20vh;
   color: #fff;
-  font-size: 1.5em;
-  font-weight: 200;
+  font-size: 3.6vw;
   text-align: center;
 }
 
-.home__description-wrapper {
+.home__description-clipper {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-}
-
-.home__description-wrapper {
-  width: 0px;
-}
-
-.home__description-wrapper .home__description--text {
-  margin-left: -512px;
 }
 // ============================================================= //
 
@@ -271,58 +270,37 @@ export default {
   height: 100vh;
   width: 100%;
   position: absolute;
-  top: 0%;
+  top: 0;
   background-color: #fff;
 }
 // ============================================================= //
 
-// ====================== Rain animation ======================= //
-.rain-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 34px;
-  height: 300px;
-  overflow: hidden;
-  transition: 0.5s ease-in-out;
-}
-
-.rain, .rain2 {
-  position: absolute;
-  top: -130px;
-  width: 2px;
-  height: 70px;
-  background: #fff;
-}
-
-$NumberOfDrops: 5;
-
-@for $i from 0 through $NumberOfDrops {
-  $left: random(100) * 1%;
-  .rain:nth-of-type(#{$i}) {
-    left: $left;
-  }
-}
-
-@for $j from 0 through $NumberOfDrops {
-  $left: random(100) * 1%;
-  .rain2:nth-of-type(#{$j}) {
-    left: $left;
-  }
-}
-
 // Prevent scroll.
-.no-scroll{
+.no-scroll {
   position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
   z-index: 10;
+  overflow: hidden;
+}
+// ============================================================= //
+
+// ====================== Media queries ======================== //
+@media screen and (min-width: 750px) {
+  .home__description {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .home__description {font-size: 19px;}
 }
 
 @media screen and (max-width: 450px) {
-  .home__text--job {
-    font-size: 6vw;
-  }
+  .home__text--job {font-size: 5vw;}
+  .home__description {font-size: 13px;}
+  .home__text--location {font-size: 16px;}
 }
+// ============================================================= //
 </style>

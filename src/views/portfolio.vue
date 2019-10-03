@@ -6,7 +6,14 @@ section#portfolio
       .animated
         img(:src="getImages(project.image)")
       h2.project__title.animated {{ project.name }}
-      .project__description.animated {{ project.description }}
+      .project__description.animated #[strong {{ project.description }}]
+      .project__details.animated #[em {{ project.details }}]
+      .project__tools.animated
+        i.icon-wand {{ project.tools }}
+      .project__link.animated(v-if="project.link")
+        a(:href="project.link" target="_blank") #[em {{ project.linkText }}]
+      .project__link.animated(v-else)
+        .project__link--coming-soon #[em {{ project.linkText }}]
 </template>
 
 <script>
@@ -20,10 +27,42 @@ export default {
   },
   data: () => ({
     projects: [
-      { name: 'CookCook', image: 'cookcook.png', description: 'Web App', animation: 'animation-a' },
-      { name: 'SweetCocktails', image: 'sweetcocktails.png', description: 'Web App', animation: 'animation-b' },
-      { name: 'HTMLTags', image: 'htmltags.png', description: 'Web App', animation: 'animation-c' },
-      { name: 'Template Porfolio', image: 'portfolio.png', description: 'Web App', animation: 'animation-d' },
+      {
+        name: 'SweetCocktails',
+        image: 'sweetcocktails.png',
+        description: 'Web App',
+        animation: 'animation-a',
+        details: 'This is a cocktails website where users can create their own recipes and set up their virtual bar like their real one to get matching cocktails recipes.',
+        tools: 'Javascript, Vue, HTML5, CSS3, PHP, MySql, Git',
+        // link: 'Coming soon',
+        linkText: 'Coming soon' },
+      {
+        name: 'CookCook',
+        image: 'cookcook.png',
+        description: 'Web App',
+        animation: 'animation-b',
+        details: 'This is a recipes website where users can get recipes but also create and manage their own personal recipes.',
+        tools: 'Javascript, Vue, HTML5, CSS3, PHP, MySql, Git',
+        link: 'https://helene-andre.github.io/cookcook',
+        linkText: 'helene-andre.github.io/cookcook' },
+      {
+        name: 'HTMLTags',
+        image: 'htmltags.png',
+        description: 'Web App',
+        animation: 'animation-c',
+        details: 'A website resuming all the html tags.',
+        tools: 'Javascript, jQuery, HTML5, CSS3',
+        link: 'https://helene-andre.github.io/html-memento',
+        linkText: 'helene-andre.github.io/html-memento' },
+      {
+        name: 'Porfolio Template',
+        image: 'portfolio.png',
+        description: 'Web App',
+        animation: 'animation-d',
+        details: 'An online portfolio created for a customer.',
+        tools: 'Javascript, Vue, HTML5, CSS3, PHP, Git',
+        link: 'https://helene-andre.github.io/portfolio-template',
+        linkText: 'helene-andre.github.io/portfolio-template' }
     ]
   }),
   methods: {
@@ -96,8 +135,16 @@ export default {
     text-align: right;
     &__title {color: #fff;}
     &:nth-child(2), &:nth-child(4) {align-self: flex-end; text-align: left;}
+    & .animated {padding-bottom: 4px;}
     &__description {padding-top: 6px;}
     & img {width: 100%;}
+    &__link a {
+      color: #fbddcd;
+      text-decoration: underline;
+      transition: 0.3s ease-in-out;
+      &:hover {color: #fff;}
+      &--coming-soon {color: #fbddcd;}
+    }
   }
 }
 

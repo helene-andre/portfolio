@@ -46,14 +46,14 @@ export default {
         link: 'https://helene-andre.github.io/cookcook',
         linkText: 'helene-andre.github.io/cookcook' },
       {
-        name: 'HTMLTags',
-        image: 'htmltags.png',
+        name: 'Momentum',
+        image: 'momentum.png',
         description: 'Web App',
         animation: 'animation-c',
-        details: 'A website resuming all the html tags.',
+        details: 'Replicate web-app of the chrome pluggin momentum.',
         tools: 'Javascript, jQuery, HTML5, CSS3',
-        link: 'https://helene-andre.github.io/html-memento',
-        linkText: 'helene-andre.github.io/html-memento' },
+        link: 'https://helene-andre.github.io/momentum',
+        linkText: 'helene-andre.github.io/momentum' },
       {
         name: 'Porfolio Template',
         image: 'portfolio.png',
@@ -114,9 +114,7 @@ export default {
 </script>
 
 <style lang="scss">
-#portfolio {
-  height: auto;
-}
+#portfolio {height: auto;}
 
 .projects {
   height: auto;

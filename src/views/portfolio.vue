@@ -28,14 +28,14 @@ export default {
   data: () => ({
     projects: [
       {
-        name: 'SweetCocktails',
+        name: 'SweetCocktails - coming soon',
         image: 'sweetcocktails.png',
         description: 'Web App',
         animation: 'animation-a',
         details: 'This is a cocktails website where users can create their own recipes and set up their virtual bar like their real one to get matching cocktails recipes.',
         tools: 'Javascript, Vue, HTML5, CSS3, PHP, MySql, Git',
-        // link: 'Coming soon',
-        linkText: 'Coming soon' },
+        link: 'http://v2.sweetcocktails.com',
+        linkText: 'http://v2.sweetcocktails.com' },
       {
         name: 'CookCook',
         image: 'cookcook.png',
@@ -50,8 +50,8 @@ export default {
         image: 'momentum.png',
         description: 'Web App',
         animation: 'animation-c',
-        details: 'Replicate web-app of the chrome pluggin momentum.',
-        tools: 'Javascript, jQuery, HTML5, CSS3',
+        details: 'Replicate of the chrome pluggin Momentum using external weather and famous quotes APIs',
+        tools: 'Javascript, jQuery, HTML5, CSS3, Git',
         link: 'https://helene-andre.github.io/momentum',
         linkText: 'helene-andre.github.io/momentum' },
       {

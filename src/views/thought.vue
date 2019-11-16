@@ -63,6 +63,7 @@ export default {
       height: 100%;
       width: 100%;
       transform: translate(50%, 50%);
+      -webkit-transform: translate(50%, 50%);
     }
   }
   & .bird {

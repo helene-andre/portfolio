@@ -10,10 +10,8 @@ section#portfolio
       .project__details.animated #[em {{ project.details }}]
       .project__tools.animated
         i.icon-wand {{ project.tools }}
-      .project__link.animated(v-if="project.link")
+      .project__link.animated
         a(:href="project.link" target="_blank") #[em {{ project.linkText }}]
-      .project__link.animated(v-else)
-        .project__link--coming-soon #[em {{ project.linkText }}]
 </template>
 
 <script>
@@ -159,7 +157,6 @@ export default {
       text-decoration: underline;
       transition: 0.3s ease-in-out;
       &:hover {color: #fff;}
-      &--coming-soon {color: #fbddcd;}
     }
   }
 }
@@ -182,4 +179,14 @@ export default {
 }
 
 .animated {opacity: 0;}
+
+//========================= Media queries ==============================//
+@media screen and (max-width: 570px) {
+  .projects .project {
+    width: 95%;
+    padding: 4em 0.5em 1em 0.5em;
+  }
+  .projects h2 {font-size: 1.2em;}
+  .project__details, .project__tool, .project__link {font-size: 12px;}
+}
 </style>

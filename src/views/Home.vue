@@ -9,8 +9,8 @@ section#home(:class="{ 'no-scroll': !animationDone }")
           .text #{$text}
 
     .home__text
-      .home__text--job SOFTWARE DEVELOPER
-      .home__text--location @Praktika, Melbourne
+      .home__text--job FRONTEND DEVELOPER
+      .home__text--location @Melbourne, Australia
     .home__background(v-if="!animationDone")
 
     v-fade-transition
@@ -91,15 +91,14 @@ export default {
 </script>
 
 <style lang="scss">
-#home {
-  height: auto;
-}
+#home {height: auto;}
 
 .home {
   height: 100vh;
   position: relative;
 
   &__name-wrapper {
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
@@ -119,7 +118,9 @@ export default {
     z-index: 1;
     mix-blend-mode: difference;
 
-    &--full {text-indent: 0.5em;}
+    &--full {
+      text-indent: 0.5em;
+    }
   }
 
   &__skip-button {

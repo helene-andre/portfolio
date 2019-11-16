@@ -48,9 +48,12 @@ export default {
   },
 
   mounted () {
-    this.darkenBackground()
-    this.preventScroll()
-    this.animateClipper()
+    if (window.screen.width < 570) { this.skipAnimation() }
+    else {
+      this.darkenBackground()
+      this.preventScroll()
+      this.animateClipper()
+    }
   },
 
   beforeDestroy () {

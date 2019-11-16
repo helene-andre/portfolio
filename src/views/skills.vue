@@ -130,6 +130,10 @@ export default {
   }
 }
 
+@media screen and (max-width: 520px) {
+  .skills {margin-top: 6em;}
+}
+
 @media screen and (max-width: 470px) {
   .skills {
     display: block;

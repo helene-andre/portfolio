@@ -23,7 +23,6 @@ export default {
   data: () => ({
     skills: [
       {
-        class: 'skills__frontend skill__top',
         title: 'Preprocessors & ECMA Script',
         description: [
           { name: 'Sass / SCSS', icon: 'icon-sass' },
@@ -32,7 +31,6 @@ export default {
         ]
       },
       {
-        class: 'skills__JSFrameworks skill__top',
         title: 'JS Frameworks',
         description: [
           { name: 'Vue', icon: 'icon-vue' },
@@ -41,7 +39,6 @@ export default {
         ]
       },
       {
-        class: 'skills__JSLibraries skill__top',
         title: 'JS Librairies',
         description: [
           { name: 'GSAP', icon: 'icon-sock' },
@@ -49,7 +46,6 @@ export default {
         ]
       },
       {
-        class: 'skills__backend skill__bottom',
         title: 'Backend',
         description: [
           { name: 'PHP', icon: 'icon-php' },
@@ -57,7 +53,6 @@ export default {
         ]
       },
       {
-        class: 'skills__management skill__bottom',
         title: 'Soft skills',
         description: [
           { name: 'Strong work ethic', icon: 'icon-triangle' },
@@ -66,12 +61,12 @@ export default {
         ]
       },
       {
-        class: 'skills__interest skill__bottom',
         title: 'Interests',
         description: [
-          { name: 'CS50', icon: 'icon-triangle' },
           { name: 'CSS tricks', icon: 'icon-triangle' },
-          { name: 'GUI', icon: 'icon-triangle' }
+          { name: 'GUI', icon: 'icon-triangle' },
+          { name: 'Python', icon: 'icon-triangle' },
+          { name: 'C', icon: 'icon-triangle' }
         ]
       }
     ]
@@ -99,35 +94,32 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 10vh 15% 20vh 15%;
+  padding: 10vh 15% 0 15%;
+
   &__item {
   height: auto;
   width: 33%;
   top: 0;
   padding: 15px 15px 30px 15px;
   text-align: center;
+
     &--icon {
       padding-right: 6px;
       height: 22px;
     }
+
     &--list li {
       line-height: 21px;
       padding-bottom: 5px;
     }
   }
-  & ul {
-    margin-top: 0.5em;
-  }
+  & ul {margin-top: 0.5em;}
 }
 
-.icon-triangle:before {
-  font-size: 16px;
-}
+.icon-triangle:before {font-size: 16px;}
 
 @media screen and (max-width: 768px) {
-  .skills__item h2 {
-    font-size: 15px;
-  }
+  .skills__item h2 {font-size: 15px;}
 }
 
 @media screen and (max-width: 520px) {
@@ -135,14 +127,8 @@ export default {
 }
 
 @media screen and (max-width: 470px) {
-  .skills {
-    display: block;
-  }
-  .skills__item {
-    width: 100%;
-  }
-  .skills__item h2 {
-    font-size: 20px;
-  }
+  .skills {display: block;}
+  .skills__item {width: 100%;}
+  .skills__item h2 {font-size: 20px;}
 }
 </style>

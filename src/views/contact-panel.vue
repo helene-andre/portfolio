@@ -193,17 +193,7 @@ export default {
 }
 
 .valid-field .invalid-field-message,
-.valid-field .invalid-email-message {
-  opacity: 0;
-}
-/**=====================================================================**/
-
-/**=====================================================================**/
-
-// @media screen and (max-width: 570px) {
-//   .contact__title {font-size: 40px;}
-// }
-
+.valid-field .invalid-email-message {opacity: 0;}
 /**=====================================================================**/
 
 </style>

@@ -57,7 +57,7 @@ export default {
         image: 'portfolio.png',
         description: 'Web App',
         animation: 'animation-d',
-        details: 'An online portfolio created for a customer.',
+        details: 'An online portfolio built for a customer.',
         tools: 'Javascript, Vue, HTML5, CSS3, PHP, Git',
         link: 'https://helene-andre.github.io/portfolio-template',
         linkText: 'helene-andre.github.io/portfolio-template' }
@@ -89,11 +89,6 @@ export default {
         .fromTo('.animation-d .animated', 0.5, { opacity: 0 }, { opacity: 1 })
         .staggerTo('.animation-d .animated', 0.7, { x: '-135%' }, 0.3)
 
-      const tween5 = new TimelineLite()
-      tween5.add(TweenLite.to('.animation-e .animated', 0.2, { ease: Power4.easeInOut }))
-        .fromTo('.animation-e .animated', 0.5, { opacity: 0 }, { opacity: 1 })
-        .staggerTo('.animation-e .animated', 0.7, { x: '135%' }, 0.3)
-
       // ScrollMagic & animation parameters on scroll for the 3 projects.
       const controller = new ScrollMagic.Controller()
       new ScrollMagic.Scene({ triggerElement: '.animation-a', triggerHook: 1 })
@@ -110,10 +105,6 @@ export default {
 
       new ScrollMagic.Scene({ triggerElement: '.animation-d', triggerHook: 1 })
         .setTween(tween4)
-        .addTo(controller)
-
-      new ScrollMagic.Scene({ triggerElement: '.animation-e', triggerHook: 1 })
-        .setTween(tween5)
         .addTo(controller)
     }
   }

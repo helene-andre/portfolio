@@ -1,14 +1,18 @@
 <template lang="pug">
 div
+  //- Menu big screens.
   v-slide-x-reverse-transition
     .right-menu(v-if="animationDone")
       ul.right-menu--big-screen
+        li
+          v-icon.drawer-toggle-big-screeen(color="white" @click.stop="drawer = !drawer" title="Menu") icon-hamburger
         li(v-for="(item, i) in menuItems" :key="i" v-if="item.title")
           a(:href="item.link" :title="item.title" target="_blank")
             i.right-menu__icon(:class="item.icon")
         li(@click.stop="contactDrawer = !contactDrawer")
           v-icon.right-menu__icon(color="#fff" title="Email Me") icon-email
 
+  //- Menu small screens.
   v-slide-x-reverse-transition
     .right-menu(v-if="animationDone")
       nav.right-menu--small-screen
@@ -66,7 +70,7 @@ export default {
       { title: 'GitHub', link: 'https://github.com/helene-andre', icon: 'icon-github' },
       { title: 'CodePen', link: 'https://codepen.io/Helene-Andre/', icon: 'icon-codepen' },
       { title: 'Linkedin', link: 'https://www.linkedin.com/in/helene-andre/', icon: 'icon-linkedin' },
-      { title: 'My Resume', link: './helene-resume.pdf', icon: 'icon-download' }
+      { title: 'My Resume', link: './helene-frontend-dev.pdf', icon: 'icon-download' }
     ]
   })
 }
@@ -83,9 +87,8 @@ export default {
   width: 50px;
   position: fixed;
   right: 0%;
-  top: 46%;
+  top: 45%;
   text-align: center;
-  // transition: 0.3s ease-in-out;
 
   &__icon {
     position: relative;
@@ -99,7 +102,7 @@ export default {
 
 .right-menu--small-screen--checkbox {display: none;}
 .drawer.v-navigation-drawer {background-color: rgba(33, 33, 33, 0.9);}
-
+.drawer-toggle-big-screeen {font-size: 36px;}
 .drawer-toggle {
   position: fixed;
   top: 1%;

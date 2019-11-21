@@ -24,7 +24,7 @@ section#home(:class="{ 'no-scroll': !animationDone }")
   .home__description
     div.home__description-clipper
       div.home__description--text I help companies &amp; individuals to build
-      div friendly user interfaces and seamless experiences.
+      div user friendly experience and elegant interfaces.
 </template>
 
 <script>

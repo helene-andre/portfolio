@@ -2,7 +2,7 @@
 .contact
   h1.contact__title Contact
   .contact__name Helene Andre
-  .contact__job Software Developer
+  .contact__job Frontend Developer
   form.contact-form(action="https://formspree.io/helene.andre.06@gmail.com" @submit="checkForm" method="post")
     .contact-form__field-wrapper(:class="{ 'invalid-field': errors.name, 'valid-field': name && !errors.name }")
       input.contact-form__field(

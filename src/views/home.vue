@@ -75,11 +75,11 @@ export default {
       let timelineClipper = new TimelineMax()
 
       timelineClipper.to('.home__description-clipper', 2, { opacity: 1 })
-        .fromTo('.home__description--text', 2, { marginLeft: '-110%', opacity: 0 }, { marginLeft: 0, opacity: 1 }, 1.6)
+        .fromTo('.home__description--text', 1.2, { marginLeft: '-110%', opacity: 0 }, { marginLeft: 0, opacity: 1 }, 2)
         .fromTo('.home__description-clipper', 4, { width: 0 }, { width: '100%' }, 2)
 
       const controller = new ScrollMagic.Controller()
-      new ScrollMagic.Scene({ triggerElement: '.home__description', duration: '100%', triggerHook: 0.7 })
+      new ScrollMagic.Scene({ triggerElement: '.home__description', duration: '120%', triggerHook: 0.7 })
         .setTween(timelineClipper)
         .addTo(controller)
     },
@@ -103,10 +103,9 @@ export default {
   &__name-wrapper {
     width: 100%;
     position: absolute;
-    top: 0;
+    top: 51vh;
     left: 0;
     right: 0;
-    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,6 +119,7 @@ export default {
   &__name {
     z-index: 1;
     mix-blend-mode: difference;
+    line-height: 0vh;
 
     &--full {
       text-indent: 0.5em;

@@ -87,7 +87,7 @@ export default {
   width: 50px;
   position: fixed;
   right: 0%;
-  top: 45%;
+  top: 46vh;
   text-align: center;
 
   &__icon {

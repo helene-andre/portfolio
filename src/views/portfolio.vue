@@ -122,7 +122,7 @@ export default {
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  padding: 0 10% 0 10%;
+  padding: 0 10% 40vh 10%;
   & .project {
     height: auto;
     width: 70%;

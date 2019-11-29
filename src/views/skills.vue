@@ -71,29 +71,19 @@ export default {
       }
     },
     animateGlobalSkills () {
-      // Set sentence animation.
-      const animateSkillsTitle = new TimelineLite({ paused:true })
-      animateSkillsTitle
-        .fromTo('.text__description', 0.75, { width: '0'}, { width: '12.8em', ease: SteppedEase.config(18) })
-        .play()
-
-      const controller0 = new ScrollMagic.Controller()
-      new ScrollMagic.Scene({ triggerElement: '#skills', triggerHook: 0.4 })
-        .setTween(animateSkillsTitle)
-        .addTo(controller0)
-
-      // Animate skills carousel.
+      // Animate skills sentence & carousel.
       let time = 0.4;
       let y = 100;
       let animateSkillsItem = new TimelineLite({ onComplete: function(){ animateSkillsItem.restart() } })
       animateSkillsItem
+        .fromTo('.text__description', 0.75, { width: '0'}, { width: '12.8em', ease: SteppedEase.config(22) })
         .add( TweenMax.staggerFromTo ('.text__item', time, { opacity: 0, y: y }, { opacity: 1, y: 0 }, 2))
         .add( TweenMax.staggerTo ('.text__item', time, { delay: time, opacity: 0, y: -y }, 2), 1.3)
-        .delay(0.75)
+        .delay(1)
         .play()
 
       const controllerSkillsItem = new ScrollMagic.Controller()
-      new ScrollMagic.Scene({ triggerElement: '.text', triggerHook: 0.4 })
+      new ScrollMagic.Scene({ triggerElement: '.text', triggerHook: 1 })
         .setTween(animateSkillsItem)
         .addTo(controllerSkillsItem)
     },
@@ -112,8 +102,8 @@ export default {
       // // Animate lines in map skills.
       let animateSkillsLines = new TimelineLite({ paused:true })
       animateSkillsLines
-        .fromTo('.map__item', 0.75, { height: '0', 'border-right-color': 'rgba(255, 255, 255, 0)', 'padding-top': '0', top: '50%' }, { height: '30em', 'border-right-color':'rgba(255, 255, 255, 1)', opacity: 1, 'padding-top': '72%', top: '0', ease: Power3.easeIn }, 0.5)
-        .fromTo('.map__item', 0.75, { width: '1px', 'border-right-color': 'rgba(255, 255, 255, 1)' }, { width: '12em', 'border-right-color':'rgba(255, 255, 255, 0)', opacity: 1, ease: Power3.easeIn }, 1.25)
+        .fromTo('.map__item', 1, { height: '0', 'border-right-color': 'rgba(255, 255, 255, 0)', 'padding-top': '0', top: '50%' }, { height: '30em', 'border-right-color':'rgba(255, 255, 255, 1)', opacity: 1, 'padding-top': '72%', top: '0', ease: Power3.easeIn }, 0.5)
+        .fromTo('.map__item', 1.5, { width: '1px', 'border-right-color': 'rgba(255, 255, 255, 1)' }, { width: '12em', 'border-right-color':'rgba(255, 255, 255, 0)', opacity: 1, ease: Power3.easeIn }, 1.25)
         .play()
 
       const controllerSkillsLine = new ScrollMagic.Controller()

@@ -132,7 +132,7 @@ export default {
   font-family: 'IndieFlower', Arial, Helvetica, sans-serif;
   background-color: transparent;
   width: 300px;
-  height: 300px;
+  height: 336px;
   margin: 20px;
   & h2 {color:#000;}
 }
@@ -162,7 +162,7 @@ export default {
   margin-bottom: 20px;
 
   &__image {
-    height: 76%;
+    height: 69%;
     width: 90%;
     margin: 0 5% 0 5%;
     position: relative;

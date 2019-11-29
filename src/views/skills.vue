@@ -1,0 +1,223 @@
+<template lang="pug">
+section#skills
+  //- Skills introduction.
+  .text
+    h2.text__description.anim-typewriter.line__skills I build websites with
+    div
+      .text__item(v-for="item in skills" :key="item.name" v-if="item.main === '1'") {{ item.name }}
+
+  //- Skills map.
+  .map
+    h2.map__title.line__skills I am good at...
+    .map__wrapper
+      .map__block
+        .map__item
+          h3.line__skills.line__skill Languages
+          h4.languages__frontendss.line__skills.line__skill Frontend
+          .skill.line__skills.line__skill(v-for="item in skills" v-if="item.type === 'frontend'") {{ item.name }}
+          h4.languages__backend.line__skills.line__skill Backend
+          .skill.line__skills(v-for="item in skills" v-if="item.type === 'backend'") {{ item.name }}
+      .map__block
+        .map__item.framworks
+          h3.line__skills.line__skill Frameworks
+          .skill.line__skills.line__skill(v-for="item in skills" v-if="item.type === 'framework'") {{ item.name }}
+      .map__block
+        .map__item
+          h3.line__skills.line__skill Libraries
+          .skill.line__skills.line__skill(v-for="item in skills" v-if="item.type === 'library'") {{ item.name }}
+</template>
+
+<script>
+import { TimelineLite, SteppedEase, TweenMax, Power3 } from 'gsap'
+import ScrollMagic from 'scrollmagic'
+
+
+export default {
+  name: 'skills',
+  components: {},
+  mounted () {
+    this.splitText()
+    this.animateGlobalSkills()
+    this.animateMapSkills()
+  },
+  data: () => ({
+    skills: [
+      { name: 'HTML5', type: 'frontend', main: '1' },
+      { name: 'CSS3, Sass/SCSS', type: 'frontend', main: '1' },
+      { name: 'JavaScript ES6', type: 'frontend', main: '1' },
+      { name: 'PHP', type: 'backend' },
+      { name: 'SQL/MySQL', type: 'backend' },
+      { name: 'Vue.js', type: 'framework', main: '1' },
+      { name: 'Nuxt.js', type: 'framework' },
+      { name: 'React.js', type: 'framework', main: '1' },
+      { name: 'React Native', type: 'framework', main: '1' },
+      { name: 'jQuery', type: 'library' },
+      { name: 'Vuetify.js', type: 'library' },
+      { name: 'GSAP', type: 'library' },
+      { name: 'ScrollMagic', type: 'library' }
+    ]
+  }),
+  methods: {
+    splitText () {
+      let textDivs = document.getElementsByClassName('line__skills')
+      for (let k = 0; k < textDivs.length; k++) {
+        let splittedText = textDivs[k].innerHTML
+        splittedText = splittedText.split('')
+        let textSplitted = ''
+        for (let i = 0; i < splittedText.length; i++) {
+          textSplitted += `<span>${splittedText[i]}</span>`
+        }
+        textDivs[k].innerHTML = textSplitted
+      }
+    },
+    animateGlobalSkills () {
+      // Set sentence animation.
+      const animateSkillsTitle = new TimelineLite({ paused:true })
+      animateSkillsTitle
+        .fromTo('.text__description', 0.75, { width: '0'}, { width: '12.8em', ease: SteppedEase.config(18) })
+        .play()
+
+      const controller0 = new ScrollMagic.Controller()
+      new ScrollMagic.Scene({ triggerElement: '#skills', triggerHook: 0.4 })
+        .setTween(animateSkillsTitle)
+        .addTo(controller0)
+
+      // Animate skills carousel.
+      let time = 0.4;
+      let y = 100;
+      let animateSkillsItem = new TimelineLite({ onComplete: function(){ animateSkillsItem.restart() } })
+      animateSkillsItem
+        .add( TweenMax.staggerFromTo ('.text__item', time, { opacity: 0, y: y }, { opacity: 1, y: 0 }, 2))
+        .add( TweenMax.staggerTo ('.text__item', time, { delay: time, opacity: 0, y: -y }, 2), 1.3)
+        .delay(0.75)
+        .play()
+
+      const controllerSkillsItem = new ScrollMagic.Controller()
+      new ScrollMagic.Scene({ triggerElement: '.text', triggerHook: 0.4 })
+        .setTween(animateSkillsItem)
+        .addTo(controllerSkillsItem)
+    },
+    animateMapSkills () {
+      // Animate title in skills map.
+      const animateTextIn = new TimelineLite({ paused:true })
+      animateTextIn
+        .fromTo('.map__title', 0.75, { width: '0'}, { width: '9em', ease: SteppedEase.config(15) })
+        .fromTo('.map__title', 1, { 'border-right-color': 'rgba(255, 255, 255, 0.75)' }, { 'border-right-color': 'rgba(255, 255, 255, 0)', repeat: -1, ease:  SteppedEase.config(2) }, 0)
+        .play()
+      const controller = new ScrollMagic.Controller()
+      new ScrollMagic.Scene({ triggerElement: '.map', triggerHook: 0.5 })
+        .setTween(animateTextIn)
+        .addTo(controller)
+
+      // // Animate lines in map skills.
+      let animateSkillsLines = new TimelineLite({ paused:true })
+      animateSkillsLines
+        .fromTo('.map__item', 0.75, { height: '0', 'border-right-color': 'rgba(255, 255, 255, 0)', 'padding-top': '0', top: '50%' }, { height: '30em', 'border-right-color':'rgba(255, 255, 255, 1)', opacity: 1, 'padding-top': '72%', top: '0', ease: Power3.easeIn }, 0.5)
+        .fromTo('.map__item', 0.75, { width: '1px', 'border-right-color': 'rgba(255, 255, 255, 1)' }, { width: '12em', 'border-right-color':'rgba(255, 255, 255, 0)', opacity: 1, ease: Power3.easeIn }, 1.25)
+        .play()
+
+      const controllerSkillsLine = new ScrollMagic.Controller()
+      new ScrollMagic.Scene({ triggerElement: '.map', triggerHook: 0.6 })
+        .setTween(animateSkillsLines)
+        .addTo(controllerSkillsLine)
+
+      // Animate skills in map skills.
+      let animateSkillsItem = new TimelineLite({ paused:true })
+      animateSkillsItem
+        .add( TweenMax.staggerFromTo ('.line__skill', 1.5, { width: '0', opacity: 0 }, { width: '12em', 'border-right-color': '#fff', opacity: 1, delay: 1, ease: SteppedEase.config(15) }, 0.1))
+        .play()
+
+      const controllerSkillsItem = new ScrollMagic.Controller()
+      new ScrollMagic.Scene({ triggerElement: '.map', triggerHook: 0.5 })
+        .setTween(animateSkillsItem)
+        .addTo(controllerSkillsItem)
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+#skills {height: 240vh;}
+//================================================ Text ====================================================//
+.text {
+  height: auto;
+  width: max-content;
+  position: absolute;
+  top: 40vh;
+  display: flex;
+
+  &__description {width: 12.8em;}
+
+  &__item {
+    width: max-content;
+    position: absolute;
+    padding-left: 15px;
+    line-height: 1em;
+    font-size: 1.9em;
+    color: #20f7c4;
+    opacity: 0;
+  }
+}
+
+.line__skills, .line__skill {
+  position: relative;
+  width: 10.7em;
+  line-height: 1.2em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.anim-typewriter {width:0;}
+//==========================================================================================================//
+
+//================================================ Map =====================================================//
+.map {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+
+  &__title {
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 9em;
+    white-space: nowrap;
+    color: #fafafa;
+    border-right:1px solid rgba(255, 255, 255, 0);
+  }
+
+  &__wrapper {
+    height: 90vh;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__block {
+    position: relative;
+    height: 100%;
+    width: 12em;
+  }
+
+  &__item {
+    height: fit-content;
+    position: relative;
+    top: 0%;
+    padding-top: 0;
+    height: 30em;
+    width: 12em;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 1px solid #fff;
+  }
+}
+
+.skill {
+  font-size: 1.3em;
+  padding-bottom: 4px;
+}
+//==========================================================================================================//
+</style>

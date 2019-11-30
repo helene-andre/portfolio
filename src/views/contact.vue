@@ -46,10 +46,13 @@ export default {
       }
     },
     animateContactTexts () {
+      let contactWidth = '11.5em'
+      if (window.innerHeight < 660) contactWidth = '13em'
+
       // Animate contact title.
       const animateTextContact = new TimelineLite({ paused:true })
       animateTextContact
-        .fromTo('.contact__title', 0.75, { width: '0'}, { width: '11.5em', ease: SteppedEase.config(20) }, 0)
+        .fromTo('.contact__title', 0.75, { width: '0'}, { width: contactWidth, ease: SteppedEase.config(20) }, 0)
         .fromTo('.contact__title', 1, {"border-right-color": "rgba(255, 255, 255, 0.75)"}, {"border-right-color": "rgba(255, 255, 255, 0)", repeat: -1, ease:  SteppedEase.config(2)}, 0)
         .play()
       const controller = new ScrollMagic.Controller()

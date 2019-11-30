@@ -33,11 +33,18 @@ export default {
       }
     },
     animateTextsIn () {
+      let homeTitleWidth = '11em'
+      let homeJobWidth = '18em'
+      if (window.innerHeight < 660) {
+        homeTitleWidth = '12em'
+        homeJobWidth = '19em'
+      }
+
       const animateTextIn = new TimelineLite({ paused:true })
       animateTextIn
-        .fromTo('.home__title', 0.75, { width: '0' }, { width: '11em', ease: SteppedEase.config(18) }, 1)
+        .fromTo('.home__title', 0.75, { width: '0' }, { width: homeTitleWidth, ease: SteppedEase.config(18) }, 1)
         .fromTo('.home__title', 1, { 'border-right-color': 'rgba(255, 255, 255, 0.75)' }, { 'border-right-color': 'rgba(255, 255, 255, 0)', repeat: -1, ease:  SteppedEase.config(2) }, 0)
-        .fromTo('.home__job', 1, { width: '0' }, { width: '18em', ease: SteppedEase.config(40) }, 1.75)
+        .fromTo('.home__job', 1, { width: '0' }, { width: homeJobWidth, ease: SteppedEase.config(40) }, 1.75)
         .fromTo('.home__arrow', 0.75, { bottom: '50px', opacity: 0 }, { bottom: '0', opacity: 0.75, repeat: -1, ease: SteppedEase.config(2) }, 2.75)
         .play()
     },
@@ -54,10 +61,16 @@ export default {
         .addTo(controllerElements)
     },
     animateTextsOut () {
+      let homeTitleWidth = '11em'
+      let homeJobWidth = '18em'
+      if (window.innerHeight < 660) {
+        homeTitleWidth = '12em'
+        homeJobWidth = '19em'
+      }
       const animateTextsOut = new TimelineLite({ paused:true })
       animateTextsOut
-        .fromTo('.home__job', 0.75, { width: '18em' }, { width: '0', ease: SteppedEase.config(35) }, 0)
-        .fromTo('.home__title', 0.75, { width: '11em'}, { width: '0', ease: SteppedEase.config(18) }, 0.5)
+        .fromTo('.home__job', 0.75, { width: homeJobWidth }, { width: '0', ease: SteppedEase.config(35) }, 0)
+        .fromTo('.home__title', 0.75, { width: homeTitleWidth}, { width: '0', ease: SteppedEase.config(18) }, 0.5)
         .play()
         .delay(0)
         .kill()
@@ -118,4 +131,10 @@ export default {
   position: absolute;
   top: 102%;
 }
+
+//=================================================== media queries ========================================//
+@media screen and (max-width: 450px) {
+  #home h1 {font-size: 1.8em;}
+}
+//===========================================================================================================//
 </style>

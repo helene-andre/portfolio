@@ -78,9 +78,11 @@ export default {
       }
     },
     animateTexts () {
+      let portfolioWidth = '5em'
+      if (window.innerHeight < 660) portfolioWidth = '6em'
       const animatePortfolioTexts = new TimelineLite({ paused:true })
       animatePortfolioTexts
-        .fromTo('.projects__title', 0.75, { width: '0'}, { width: '5em', ease: SteppedEase.config(8) }, 0)
+        .fromTo('.projects__title', 0.75, { width: '0'}, { width: portfolioWidth, ease: SteppedEase.config(8) }, 0)
         .fromTo('.projects__title', 1, { 'border-right-color': 'rgba(255, 255, 255, 0.75)' }, { 'border-right-color': 'rgba(255, 255, 255, 0)', repeat: -1, ease:  SteppedEase.config(2) }, 0)
         .play()
 

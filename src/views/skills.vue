@@ -71,6 +71,9 @@ export default {
       }
     },
     animateGlobalSkills () {
+      let skillsWidth = '12.8em'
+      if (window.innerHeight < 660) skillsWidth = '14em'
+
       // Delay scroll global skills.
       let controllerBlockSkills = new ScrollMagic.Controller({});
       new ScrollMagic.Scene({triggerElement: '#skills', duration: 2000, triggerHook: 0.1 })
@@ -82,7 +85,7 @@ export default {
       let y = 100;
       let animateSkillsItem = new TimelineLite({ onComplete: function(){ animateSkillsItem.restart() } })
       animateSkillsItem
-        .fromTo('.text__description', 0.75, { width: '0'}, { width: '12.8em', ease: SteppedEase.config(22) })
+        .fromTo('.text__description', 0.75, { width: '0'}, { width: skillsWidth, ease: SteppedEase.config(22) })
         .add( TweenMax.staggerFromTo ('.text__item', time, { opacity: 0, y: y }, { opacity: 1, y: 0 }, 2))
         .add( TweenMax.staggerTo ('.text__item', time, { delay: time, opacity: 0, y: -y }, 2), 1.3)
         .delay(1)
@@ -94,10 +97,12 @@ export default {
         .addTo(controllerSkillsItem)
     },
     animateMapSkills () {
+      let skillsMapWidth = '9em'
+      if (window.innerHeight < 660) skillsMapWidth = '10em'
       // Animate title in skills map.
       const animateTextIn = new TimelineLite({ paused:true })
       animateTextIn
-        .fromTo('.map__title', 0.75, { width: '0'}, { width: '9em', ease: SteppedEase.config(15) })
+        .fromTo('.map__title', 0.75, { width: '0'}, { width: skillsMapWidth, ease: SteppedEase.config(15) })
         .fromTo('.map__title', 1, { 'border-right-color': 'rgba(255, 255, 255, 0.75)' }, { 'border-right-color': 'rgba(255, 255, 255, 0)', repeat: -1, ease:  SteppedEase.config(2) }, 0)
         .play()
       const controller = new ScrollMagic.Controller()

@@ -37,7 +37,7 @@ export default {
       animateTextIn
         .fromTo('.home__title', 0.75, { width: '0' }, { width: '11em', ease: SteppedEase.config(18) }, 1)
         .fromTo('.home__title', 1, { 'border-right-color': 'rgba(255, 255, 255, 0.75)' }, { 'border-right-color': 'rgba(255, 255, 255, 0)', repeat: -1, ease:  SteppedEase.config(2) }, 0)
-        .fromTo('.home__job', 0.75, { width: '0' }, { width: '15em', ease: SteppedEase.config(35) }, 1.75)
+        .fromTo('.home__job', 1, { width: '0' }, { width: '18em', ease: SteppedEase.config(40) }, 1.75)
         .fromTo('.home__arrow', 0.75, { bottom: '50px', opacity: 0 }, { bottom: '0', opacity: 0.75, repeat: -1, ease: SteppedEase.config(2) }, 2.75)
         .play()
     },
@@ -56,7 +56,7 @@ export default {
     animateTextsOut () {
       const animateTextsOut = new TimelineLite({ paused:true })
       animateTextsOut
-        .fromTo('.home__job', 0.75, { width: '15em' }, { width: '0', ease: SteppedEase.config(35) }, 0)
+        .fromTo('.home__job', 0.75, { width: '18em' }, { width: '0', ease: SteppedEase.config(35) }, 0)
         .fromTo('.home__title', 0.75, { width: '11em'}, { width: '0', ease: SteppedEase.config(18) }, 0.5)
         .play()
         .delay(0)
@@ -100,7 +100,7 @@ export default {
 }
 
 .home__job {
-  width: 15em;
+  width: 18em;
 
   & span {padding-left: 3px;}
 }

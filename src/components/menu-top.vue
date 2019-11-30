@@ -68,6 +68,7 @@ export default {
 
 .menu__item {
   padding: 2px 4px 2px 0;
+  text-shadow: 1px 1px rgba(#000, 0.5);
   margin-bottom: 4px;
 
   &:hover {transform: scale(1.1);}

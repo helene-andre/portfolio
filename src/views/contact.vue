@@ -118,4 +118,24 @@ export default {
     color: #fafafa;
   }
 }
+
+//=================================================== media queries ========================================//
+@media screen and (max-width: 762px) {
+  #contact { height: 80vh;}
+  .contact__details {font-size: 1.7em;}
+}
+
+@media screen and (max-width: 650px) {
+  .contact__details {font-size: 1.2em;}
+}
+
+@media screen and (max-width: 450px) {
+  .contact__details {font-size: 15px;}
+  #contact a {font-size: 1.6em;}
+  #contact { height: 60vh;}
+}
+
+@media screen and (max-width: 370px) {
+}
+//==========================================================================================================//
 </style>

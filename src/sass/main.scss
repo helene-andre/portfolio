@@ -10,7 +10,6 @@ section {
   position: relative;
   height: 100vh;
   margin-top: 70vh;
-  & h1 {font-size: 3em;}
 }
 
 h1, h2, h3, h4 {
@@ -48,3 +47,31 @@ a {
   color: #2fb796;
   &:hover {color: #212121;}
 }
+
+//=================================================== media queries ========================================//
+@media screen and (max-width: 762px) {
+  h1 {font-size: 2.8em;}
+  h2 {font-size: 1.7em;}
+  h3 {font-size: 1.5em;}
+  h4 {font-size: 1.2em;}
+  section {margin-top: 16vh;}
+}
+
+@media screen and (max-width: 650px) {
+  h1 {font-size: 2.4em;}
+  h2 {font-size: 1.2em;}
+  h3 {font-size: 1.1em;}
+  h4 {font-size: 1em;}
+}
+
+@media screen and (max-width: 450px) {
+  h1 {font-size: 2em;}
+  h2 {font-size: 15px;}
+  h3 {font-size: 14px;}
+  h4 {font-size: 13px;}
+}
+
+@media screen and (max-width: 370px) {
+  h1 {font-size: 1.6em;}
+}
+//==========================================================================================================//

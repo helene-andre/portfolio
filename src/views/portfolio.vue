@@ -199,4 +199,14 @@ export default {
   &__title {padding: 20px 0 10px 0;}
   & div {padding-bottom: 10px;}
 }
+
+//=================================================== media queries ========================================//
+@media screen and (max-width: 762px) {
+  #portfolio {height: 230vh;}
+}
+
+@media screen and (max-height: 660px) {
+  #portfolio {height: 280vh;}
+}
+//==========================================================================================================//
 </style>

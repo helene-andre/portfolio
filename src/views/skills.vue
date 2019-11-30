@@ -71,6 +71,12 @@ export default {
       }
     },
     animateGlobalSkills () {
+      // Delay scroll global skills.
+      let controllerBlockSkills = new ScrollMagic.Controller({});
+      new ScrollMagic.Scene({triggerElement: '#skills', duration: 2000, triggerHook: 0.1 })
+              .setPin('#skills')
+              .addTo(controllerBlockSkills)
+
       // Animate skills sentence & carousel.
       let time = 0.4;
       let y = 100;
@@ -100,10 +106,19 @@ export default {
         .addTo(controller)
 
       // // Animate lines in map skills.
+      let skillWidth = '12em'
+      let skillHeight = '40vh'
+      let skillPaddingTop = '72%'
+
+      if (window.innerWidth < 450) {
+        skillHeight = 'auto'
+        skillPaddingTop = '20px'
+      }
+
       let animateSkillsLines = new TimelineLite({ paused:true })
       animateSkillsLines
-        .fromTo('.map__item', 1, { height: '0', 'border-right-color': 'rgba(255, 255, 255, 0)', 'padding-top': '0', top: '50%' }, { height: '30em', 'border-right-color':'rgba(255, 255, 255, 1)', opacity: 1, 'padding-top': '72%', top: '0', ease: Power3.easeIn }, 0.5)
-        .fromTo('.map__item', 1.5, { width: '1px', 'border-right-color': 'rgba(255, 255, 255, 1)' }, { width: '12em', 'border-right-color':'rgba(255, 255, 255, 0)', opacity: 1, ease: Power3.easeIn }, 1.25)
+        .fromTo('.map__item', 1, { height: '0', 'border-right-color': 'rgba(255, 255, 255, 0)', 'padding-top': '0', top: '50%' }, { height: skillHeight, 'border-right-color':'rgba(255, 255, 255, 1)', opacity: 1, 'padding-top': skillPaddingTop, top: '0', ease: Power3.easeIn }, 0.5)
+        .fromTo('.map__item', 1.5, { width: '1px', 'border-right-color': 'rgba(255, 255, 255, 1)' }, { width: skillWidth, 'border-right-color':'rgba(255, 255, 255, 0)', opacity: 1, ease: Power3.easeIn }, 2)
         .play()
 
       const controllerSkillsLine = new ScrollMagic.Controller()
@@ -114,7 +129,7 @@ export default {
       // Animate skills in map skills.
       let animateSkillsItem = new TimelineLite({ paused:true })
       animateSkillsItem
-        .add( TweenMax.staggerFromTo ('.line__skill', 1.5, { width: '0', opacity: 0 }, { width: '12em', 'border-right-color': '#fff', opacity: 1, delay: 1, ease: SteppedEase.config(15) }, 0.1))
+        .add( TweenMax.staggerFromTo ('.line__skill', 1.5, { width: '0', opacity: 0 }, { width: skillWidth, 'border-right-color': '#fff', opacity: 1, delay: 1, ease: SteppedEase.config(15) }, 0.1))
         .play()
 
       const controllerSkillsItem = new ScrollMagic.Controller()
@@ -127,7 +142,7 @@ export default {
 </script>
 
 <style lang="scss">
-#skills {height: 240vh;}
+#skills {height: 200vh;}
 //================================================ Text ====================================================//
 .text {
   height: auto;
@@ -198,7 +213,7 @@ export default {
     top: 0%;
     padding-top: 0;
     height: 30em;
-    width: 12em;
+    // width: 12em;
     white-space: nowrap;
     overflow: hidden;
     border-right: 1px solid #fff;
@@ -208,6 +223,39 @@ export default {
 .skill {
   font-size: 1.3em;
   padding-bottom: 4px;
+}
+//==========================================================================================================//
+
+//=================================================== media queries ========================================//
+@media screen and (max-width: 762px) {
+  .text__item {font-size: 1.7em;}
+  .skill {font-size: 1.2em;}
+}
+
+@media screen and (max-width: 650px) {
+  .text__item {font-size: 1.2em;}
+  .skill {font-size: 13px;}
+  .map__block {width: 8em;}
+}
+
+@media screen and (max-width: 450px) {
+  .text__item {font-size: 15px;}
+  .map__wrapper {
+    top: 2em;
+    height: 72vh;
+    flex-direction: column;
+    bottom: unset;
+  }
+  .map__block {height: auto;}
+  .map__item {
+    padding-top: 20px;
+    height: 20vh;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .text__description, .text__item {font-size: 13px;}
+  .text__item {padding-left: 4px;}
 }
 //==========================================================================================================//
 </style>

@@ -5,11 +5,13 @@ section#contact
     .contact__item
       h3.contact__subtitle.line__contact eMail me:
       br
-      div.contact__details.line__contact helene.andre.06@gmail.com
+      div.contact__details
+        a#email.line__contact(href="mailto:helene.andre.06@gmail.com") helene.andre.06@gmail.com
     .contact__item
       h3.contact__subtitle.line__contact Call me
       br
-      div.contact__details.line__contact +61 (0) 484 084 650
+      div.contact__details
+        a#phone.line__contact(href="tel:+61 (0) 484 084 650") +61 (0) 484 084 650
     .contact__item
       h3.contact__subtitle.line__contact Meet me
       br
@@ -47,7 +49,7 @@ export default {
     },
     animateContactTexts () {
       let contactWidth = '11.5em'
-      if (window.innerHeight < 660) contactWidth = '13em'
+      if (window.innerHeight < 660) contactWidth = '14em'
 
       // Animate contact title.
       const animateTextContact = new TimelineLite({ paused:true })
@@ -77,6 +79,8 @@ export default {
 
 <style lang="scss">
 #contact {
+  margin-bottom: 5vh;
+
   & a {
     font-size: 2em;
     padding: 6px;
@@ -84,6 +88,7 @@ export default {
 
     &:hover {color: #2fb796;}
   }
+  & #email, #phone {padding: 0;}
 }
 
 .contact {
@@ -92,8 +97,6 @@ export default {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  margin-bottom: 4em;
-
   &__title {
     position: relative;
     width: 11.5em;
@@ -116,7 +119,7 @@ export default {
     padding: 0;
   }
 
-  &__details {
+  &__details, #email, #phone {
     font-size: 1.3em;
     color: #fafafa;
   }
@@ -125,20 +128,21 @@ export default {
 //=================================================== media queries ========================================//
 @media screen and (max-width: 762px) {
   #contact { height: 80vh;}
-  .contact__details {font-size: 1.7em;}
+  .contact__details, #email, #phone {font-size: 1.7em;}
 }
 
 @media screen and (max-width: 650px) {
-  .contact__details {font-size: 1.2em;}
+  .contact__details, #contact #email, #contact #phone {font-size: 1.2em;}
 }
 
 @media screen and (max-width: 450px) {
-  .contact__details {font-size: 15px;}
+  .contact__details, #contact #email, #contact #phone {font-size: 15px;}
   #contact a {font-size: 1.6em;}
-  #contact { height: 60vh;}
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-height: 660px) {
+  &__title {width: 14em;}
 }
+
 //==========================================================================================================//
 </style>

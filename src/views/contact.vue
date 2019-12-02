@@ -144,5 +144,9 @@ export default {
   &__title {width: 14em;}
 }
 
+@media screen and (max-height: 660px) and (max-width: 762px) {
+  .contact__details, #contact #email, #contact #phone {font-size: 15px;}
+  .contact__title {margin: 0;}
+}
 //==========================================================================================================//
 </style>

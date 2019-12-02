@@ -221,5 +221,9 @@ export default {
 @media screen and (max-height: 660px) {
   #portfolio {height: 280vh;}
 }
+
+@media screen and (max-height: 660px) and (max-width: 762px) {
+  #portfolio {height: 580vh;}
+}
 //==========================================================================================================//
 </style>

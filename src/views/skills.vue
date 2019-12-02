@@ -43,8 +43,7 @@ export default {
         description: [
           { name: 'GSAP', icon: 'icon-sock' },
           { name: 'ScrollMagic', icon: 'icon-wand' },
-          { name: 'Vuetify', icon: 'icon-triangle' },
-          { name: 'Bootstrap', icon: 'icon-triangle' }
+          { name: 'Vuetify', icon: 'icon-triangle' }
         ]
       },
       {
@@ -67,10 +66,7 @@ export default {
         description: [
           { name: 'CSS tricks', icon: 'icon-triangle' },
           { name: 'GUI', icon: 'icon-triangle' },
-          { name: 'React / React Native', icon: 'icon-triangle' },
-          { name: 'Python', icon: 'icon-triangle' },
-          { name: 'Flask', icon: 'icon-triangle' },
-          { name: 'C', icon: 'icon-triangle' }
+          { name: 'React / React Native', icon: 'icon-triangle' }
         ]
       }
     ]

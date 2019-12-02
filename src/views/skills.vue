@@ -16,7 +16,7 @@ section#skills
           h4.languages__frontendss.line__skills.line__skill Frontend
           .skill.line__skills.line__skill(v-for="item in skills" v-if="item.type === 'frontend'") {{ item.name }}
           h4.languages__backend.line__skills.line__skill Backend
-          .skill.line__skills(v-for="item in skills" v-if="item.type === 'backend'") {{ item.name }}
+          .skill.line__skills.line__skill(v-for="item in skills" v-if="item.type === 'backend'") {{ item.name }}
       .map__block
         .map__item.framworks
           h3.line__skills.line__skill Frameworks
@@ -122,7 +122,7 @@ export default {
 
       let animateSkillsLines = new TimelineLite({ paused:true })
       animateSkillsLines
-        .fromTo('.map__item', 1, { height: '0', 'border-right-color': 'rgba(255, 255, 255, 0)', 'padding-top': '0', top: '50%' }, { height: skillHeight, 'border-right-color':'rgba(255, 255, 255, 1)', opacity: 1, 'padding-top': skillPaddingTop, top: '0', ease: Power3.easeIn }, 0.5)
+        .fromTo('.map__item', 1, { height: '0', 'border-right-color': 'rgba(255, 255, 255, 0)', 'padding-top': '0', top: '50%' }, { height: skillHeight, 'border-right-color': 'rgba(255, 255, 255, 1)', opacity: 1, 'padding-top': skillPaddingTop, top: '0', ease: Power3.easeIn }, 0.5)
         .fromTo('.map__item', 1.5, { width: '1px', 'border-right-color': 'rgba(255, 255, 255, 1)' }, { width: skillWidth, 'border-right-color':'rgba(255, 255, 255, 0)', opacity: 1, ease: Power3.easeIn }, 2)
         .play()
 
@@ -134,7 +134,7 @@ export default {
       // Animate skills in map skills.
       let animateSkillsItem = new TimelineLite({ paused:true })
       animateSkillsItem
-        .add( TweenMax.staggerFromTo ('.line__skill', 1.5, { width: '0', opacity: 0 }, { width: skillWidth, 'border-right-color': '#fff', opacity: 1, delay: 1, ease: SteppedEase.config(15) }, 0.1))
+        .add( TweenMax.staggerFromTo ('.line__skill', 1.5, { width: '0', opacity: 0 }, { width: skillWidth, opacity: 1, delay: 1, ease: SteppedEase.config(15) }, 0.1))
         .play()
 
       const controllerSkillsItem = new ScrollMagic.Controller()
@@ -254,6 +254,7 @@ export default {
   .map__block {height: auto;}
   .map__item {
     padding-top: 20px;
+    padding-left: 10px;
     height: 20vh;
   }
 }

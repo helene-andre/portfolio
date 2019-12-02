@@ -1,8 +1,8 @@
 <template lang="pug">
 section#home
   div.home__texts-wrapper
-    h1.home__title.line-home Hello, I'm Helene.
-    h2.home__job.line-home I'm a frontend developer.
+    h1.home__title.line-home Hello, I'm Helene
+    h2.home__job.line-home I'm a frontend developer
   .home__arrow
     .icon.i-angle-down
   div.home__trigger

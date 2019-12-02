@@ -1,7 +1,7 @@
 <template lang="pug">
 section#contact
   div.contact
-    h2.contact__title.line__contact Let's work together.
+    h2.contact__title.line__contact Let's work together
     .contact__item
       h3.contact__subtitle.line__contact eMail me:
       br

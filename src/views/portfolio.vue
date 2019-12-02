@@ -3,7 +3,7 @@ section#portfolio
   h2.projects__title.line-portfolio My works
   .projects
     .project(v-for="(project) in projects")
-      .project__inner
+      .project__inner(@click="turnPolaroid")
         .project-front
           .project-front__image
             img.image(:src="getImage(project.image)")
@@ -102,6 +102,10 @@ export default {
       new ScrollMagic.Scene({ triggerElement: '#portfolio', triggerHook: 1 })
         .setTween(animatePolaroids)
         .addTo(controllerPortfolioTitle)
+    },
+    turnPolaroid () {
+      if (window.innerHeight > 670) event.currentTarget.classList.toggle('turn-big-screen')
+      else event.currentTarget.classList.toggle('turn-small-screen')
     }
   }
 }
@@ -149,8 +153,11 @@ export default {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.project:hover .project__inner {
+.turn-big-screen {transform: rotateY(180deg);}
+
+.turn-small-screen {
   transform: rotateY(180deg);
+  & .project-front {opacity: 0;}
 }
 
 .project-front, .project-back {
@@ -164,6 +171,7 @@ export default {
 .project-front {
   background-color: #fff;
   margin-bottom: 20px;
+  cursor: pointer;
 
   &__image {
     height: 69%;
@@ -200,6 +208,7 @@ export default {
   background-color: #fff;
   color: #000;
   transform: rotateY(180deg);
+
   &__title {padding: 20px 0 10px 0;}
   & div {padding-bottom: 10px;}
 }

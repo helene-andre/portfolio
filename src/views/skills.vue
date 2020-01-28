@@ -50,7 +50,6 @@ export default {
       { name: 'Vue.js', type: 'framework', main: '1' },
       { name: 'Nuxt.js', type: 'framework' },
       { name: 'React.js', type: 'framework', main: '1' },
-      { name: 'React Native', type: 'framework', main: '1' },
       { name: 'jQuery', type: 'library' },
       { name: 'Vuetify.js', type: 'library' },
       { name: 'GSAP', type: 'library' },

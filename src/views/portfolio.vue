@@ -104,8 +104,7 @@ export default {
         .addTo(controllerPortfolioTitle)
     },
     turnPolaroid () {
-      if (window.innerHeight > 670) event.currentTarget.classList.toggle('turn-big-screen')
-      else event.currentTarget.classList.toggle('turn-small-screen')
+      event.currentTarget.classList.toggle('turn-small-screen')
     }
   }
 }

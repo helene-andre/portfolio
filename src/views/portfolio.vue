@@ -27,7 +27,7 @@ export default {
     projects: [
       {
         name: 'SweetCocktails - coming soon',
-        image: 'sweetcocktails.png',
+        image: 'sweetcocktails.jpg',
         description: 'Web App',
         animation: 'animation-a',
         details: 'Interactive cocktail recipes web app and virtual bar.',
@@ -36,7 +36,7 @@ export default {
         linkText: 'http://v2.sweetcocktails.com' },
       {
         name: 'Sweet Bites',
-        image: 'sweetbites.png',
+        image: 'sweetbites.jpg',
         description: 'Web App',
         animation: 'animation-b',
         details: 'E-commerce web app.',
@@ -45,7 +45,7 @@ export default {
         linkText: 'helene-andre.github.io/sweetbites' },
       {
         name: 'Momentum',
-        image: 'momentum.png',
+        image: 'momentum.jpg',
         description: 'Web App',
         animation: 'animation-c',
         details: 'Clone of the famous chrome plugin Momentum using external local weather and famous quotes APIs',
@@ -54,7 +54,7 @@ export default {
         linkText: 'helene-andre.github.io/momentum' },
       {
         name: 'Porfolio Template',
-        image: 'portfolio.png',
+        image: 'portfolio.jpg',
         description: 'Web App',
         animation: 'animation-d',
         details: 'An online portfolio built for a customer.',

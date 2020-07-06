@@ -48,7 +48,7 @@ export default {
         image: 'momentum.png',
         description: 'Web App',
         animation: 'animation-c',
-        details: 'Clone of the famous chrome plugin Momentum using local weather and famous quotes APIs',
+        details: 'Clone of the famous chrome plugin Momentum using external local weather and famous quotes APIs',
         tools: 'Javascript, jQuery, HTML5, CSS3, Git',
         link: 'https://helene-andre.github.io/Momentum',
         linkText: 'helene-andre.github.io/momentum' },

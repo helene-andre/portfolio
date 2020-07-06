@@ -31,11 +31,10 @@ export default {
         ]
       },
       {
-        title: 'JS Frameworks / Tools',
+        title: 'JS Frameworks',
         description: [
           { name: 'Vue', icon: 'icon-vue' },
-          { name: 'Nuxt', icon: 'icon-triangle' },
-          { name: 'JQuery', icon: 'icon-jquery' }
+          { name: 'Nuxt', icon: 'icon-triangle' }
         ]
       },
       {
@@ -43,14 +42,16 @@ export default {
         description: [
           { name: 'GSAP', icon: 'icon-sock' },
           { name: 'ScrollMagic', icon: 'icon-wand' },
-          { name: 'Vuetify', icon: 'icon-triangle' }
+          { name: 'Vuetify', icon: 'icon-triangle' },
+          { name: 'JQuery', icon: 'icon-jquery' }
         ]
       },
       {
         title: 'Backend',
         description: [
           { name: 'PHP', icon: 'icon-php' },
-          { name: 'SQL / MySql', icon: 'icon-mysql' }
+          { name: 'SQL / MySql', icon: 'icon-mysql' },
+          { name: 'Python', icon: 'icon-triangle' }
         ]
       },
       {
@@ -65,7 +66,6 @@ export default {
         title: 'Interests',
         description: [
           { name: 'CSS tricks', icon: 'icon-triangle' },
-          { name: 'GUI', icon: 'icon-triangle' },
           { name: 'React / React Native', icon: 'icon-triangle' }
         ]
       }

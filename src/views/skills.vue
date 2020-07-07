@@ -34,7 +34,8 @@ export default {
         title: 'JS Frameworks',
         description: [
           { name: 'Vue', icon: 'icon-vue' },
-          { name: 'Nuxt', icon: 'icon-triangle' }
+          { name: 'Nuxt', icon: 'icon-triangle' },
+          { name: 'React', icon: 'icon-triangle' }
         ]
       },
       {
@@ -66,7 +67,7 @@ export default {
         title: 'Interests',
         description: [
           { name: 'CSS tricks', icon: 'icon-triangle' },
-          { name: 'React / React Native', icon: 'icon-triangle' }
+          { name: 'React Native', icon: 'icon-triangle' }
         ]
       }
     ]

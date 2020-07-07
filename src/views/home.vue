@@ -24,7 +24,7 @@ section#home(:class="{ 'no-scroll': !animationDone }")
   .home__description
     div.home__description-clipper
       div.home__description--text I build user friendly experience and elegant websites.
-      div As a developer I can also turn coffee into code :)
+      div As a developer, I can also turn coffee into code :)
 </template>
 
 <script>

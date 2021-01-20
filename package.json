@@ -12,7 +12,7 @@
   "main": "babel.config.js",
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
-    "gsap": "^1.20.6",
+    "gsap": "^3.6.0",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "script-loader": "^0.7.2",
